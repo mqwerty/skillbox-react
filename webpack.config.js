@@ -21,6 +21,23 @@ module.exports = {
         test: /\.tsx?$/,
         use: 'ts-loader',
       },
+      {
+        test: /\.scss$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                mode: 'local',
+                localIdentName: '[path][name]__[local]--[hash:base64:5]',
+                localIdentContext: path.resolve(__dirname, 'src'),
+              },
+            },
+          },
+          'sass-loader',
+        ],
+      },
     ],
   },
   plugins: [
