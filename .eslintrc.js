@@ -1,25 +1,29 @@
+/* eslint-env node */
 /* eslint-disable @typescript-eslint/no-var-requires */
 const jestConf = require('./jest.config')
 
 module.exports = {
   env: {
     es2020: true,
-    node: true,
+    browser: true,
+  },
+  settings: {
+    react: {
+      version: 'detect',
+    },
   },
   parser: '@typescript-eslint/parser',
   parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  extends: ['prettier', 'eslint:recommended', 'plugin:node/recommended', 'plugin:@typescript-eslint/recommended'],
-  plugins: ['@typescript-eslint'],
+  extends: ['prettier', 'eslint:recommended', 'plugin:react/recommended', 'plugin:@typescript-eslint/recommended'],
+  plugins: ['react', '@typescript-eslint'],
   rules: {
     'no-console': 0,
-    'node/no-unsupported-features/es-builtins': 0,
-    'node/no-unsupported-features/es-syntax': 0,
-    'node/no-extraneous-import': 0,
-    'node/no-missing-import': 0,
-    'node/no-unpublished-import': 0,
     '@typescript-eslint/no-explicit-any': 0,
     '@typescript-eslint/explicit-module-boundary-types': 0,
     '@typescript-eslint/no-non-null-assertion': 0,
